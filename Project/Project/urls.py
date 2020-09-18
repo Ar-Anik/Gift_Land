@@ -18,9 +18,11 @@ from django.urls import path
 from Customer import views as Show_views
 from Product import views as Product_views
 from Admin import views as Admin_views
+from Delivery import views as Delivery_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/',Show_views.Show_User),
     path('product/',Product_views.Show_Product),
-    path('manage/',Admin_views.Show_Admin)
+    path('manage/',Admin_views.Show_Admin),
+    path('delivery/',Delivery_views.Show_Delivery)
 ]

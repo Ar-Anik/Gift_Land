@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% include 'navbar.html' %}
+    
+{% block content %}
+
+<div class="row">
+<div class="col-md">
+    <h5 style="text-align: center; color: tomato;">Delivery-Info</h5>
+    <hr>
+    <div class="card card-body">
+        <a class="btn btn-primary btn-sm btn-block" href="">Get Delivery</a>
+        <table class="table table-sm">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                {% for i in delivery_info %}
+                   <tr>
+                       <td>{{ i.delivery_name }}</td>
+                       <td>{{ i.delivery_address}}</td>
+                       <td>{{ i.delivery_phone}}</td>
+                   </tr>
+                {% endfor %}                    
+            </tr>
+            
+        </table>
+    </div>
+</div>	
+</div>
+
+{% endblock %}

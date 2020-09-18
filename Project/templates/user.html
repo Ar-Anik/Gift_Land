@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+            <h4 style="text-align: center; color: tomato;">User-Info</h4>
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>Phone</th>
+					{% for i  in user_info %}
+					   <tr>
+						   <td>{{ i.User_name }}</td>
+                           <td>{{ i.User_email }}</td>
+                           <td>{{ i.User_address }}</td>
+						   <td>{{ i.User_phone }}</td>
+						   <td>{{ i.product_name }}</td>
+					   </tr>
+					{% endfor %}
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="row">
+	<div class="col-md-4">
+		<h5 style="text-align: center; color: tomato;">Order-Info</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary btn-sm btn-block" href="">Create Order</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Order Status</th>
+                    <th>Order Date</th>
+					{% for i in order_info %}
+					   <tr>
+						   <td>{{ i.order_status }}</td>
+                           <td>{{ i.order_date}}</td>
+					   </tr>
+					{% endfor %}                    
+				</tr>
+				
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<h5 style="text-align: center; color: tomato;">Delivery-Info</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary btn-sm btn-block" href="">Get Delivery</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Phone</th>
+					{% for i in delivery_info %}
+					   <tr>
+						   <td>{{ i.delivery_name }}</td>
+						   <td>{{ i.delivery_address}}</td>
+						   <td>{{ i.delivery_phone}}</td>
+					   </tr>
+					{% endfor %}                    
+				</tr>
+				
+			</table>
+		</div>
+	</div>	
+
+	<div class="col-md-4">
+		<h5 style="text-align: center; color: tomato;">Payment-Info</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary btn-sm btn-block" href="">Payment</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Payment Type</th>
+					<th>Amount</th>
+					{% for i in payment_info %}
+					   <tr>
+						   <td>{{ i.payment_type }}</td>
+						   <td>{{ i.payment_amount}}</td>
+					   </tr>
+					{% endfor %}                    
+				</tr>
+				
+			</table>
+		</div>
+	</div>	
+
+</div>
+
+{% endblock %}
+

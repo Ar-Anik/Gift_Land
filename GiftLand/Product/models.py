@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import user,order
+#from user.models import order
 # Create your models here.
 class Product(models.Model):
     product_id=models.IntegerField(blank=True,null=True)
@@ -62,8 +62,8 @@ class Cart(models.Model):
     cart_time=models.DateTimeField(auto_now_add=True)
     cart_discount=models.CharField(max_length=200,choices=Drate)
 
-    users=models.ForeignKey(user,on_delete=models.CASCADE,null=True,default=1)
-    orders=models.ForeignKey(order,on_delete=models.CASCADE,null=True)
+    #users=models.ForeignKey(user,on_delete=models.CASCADE,null=True,default=1)
+    #orders=models.ForeignKey(order,on_delete=models.CASCADE,null=True)
     #product=models.ManyToManyField(Product)
     #users=models.ForeignKey(user,on_delete=models.SET_NULL,null=True,default=1)
     

@@ -1,5 +1,5 @@
 from django.db import models
-#from Product.models import Cart
+from Product.models import Cart
 # Create your models here.
 
 
@@ -20,7 +20,7 @@ class order(models.Model):
     o_status = models.CharField(max_length=200, blank=True)
     o_date = models.DateTimeField(auto_now_add=True)
 
-    #cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
 
     user = models.ForeignKey(
         user, on_delete=models.CASCADE, default=1, null=True)

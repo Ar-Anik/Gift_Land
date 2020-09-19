@@ -17,14 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from Product import views as Product_views
 from Admin import views as Admin_views
+from user import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('product/',Product_views.Show_Product),
-    path('add/',Product_views.ProductAdd),
-    path('addcat/',Product_views.CategoryAdd),
-    path('addre/',Product_views.ReviewAdd),
-    path('addcart/',Product_views.CartAdd),
-    path('manage/',Admin_views.Show_Admin),
-    path('adda/',Admin_views.AdminAdd),
+    path('product/', Product_views.Show_Product),
+    path('add/', Product_views.ProductAdd),
+    path('addcat/', Product_views.CategoryAdd),
+    path('addre/', Product_views.ReviewAdd),
+    path('addcart/', Product_views.CartAdd),
+    path('manage/', Admin_views.Show_Admin),
+    path('adda/', Admin_views.AdminAdd),
+    path('addDelivery/', user_views.addDelivery),
 
 ]

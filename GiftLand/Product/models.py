@@ -91,8 +91,3 @@ class ProductCart(models.Model):
     def __str__(self):
         return str(self.Product.product_id) + "," + str(self.Cart.cart_id)    
 
-
-
-
-
-

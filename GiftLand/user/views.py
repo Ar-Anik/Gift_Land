@@ -84,5 +84,6 @@ def addDelivery(request):
 
     context = {
         "form": form,
+        "message": message,
     }
     return render(request, 'delivery.html', context)

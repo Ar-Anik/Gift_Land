@@ -33,3 +33,11 @@ class payment(models.Model):
     def __str__(self):
         return str(self.payment_id)
 
+
+class delivery(models.Model):
+    delivery_code = models.BigIntegerField(blank=True)
+
+    #order = models.ForeignKey(order, on_delete=models.CASCADE, default=1, null=True)
+
+    def __str__(self):
+        return str(self.delivery_code)

@@ -3,4 +3,4 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register([user, order, payment])
+admin.site.register([user, order, payment, delivery])

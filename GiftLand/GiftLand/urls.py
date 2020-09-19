@@ -27,6 +27,9 @@ urlpatterns = [
     path('addcart/', Product_views.CartAdd),
     path('manage/', Admin_views.Show_Admin),
     path('adda/', Admin_views.AdminAdd),
-    path('addDelivery/', user_views.addDelivery),
-
+    path('user/', user_views.customer),
+    path('adduser/', user_views.useradd),
+    path('addorder/', user_views.orderadd),
+    path('addpayment/', user_views.paymentadd),
+    path('adddelivery/', user_views.addDelivery),
 ]

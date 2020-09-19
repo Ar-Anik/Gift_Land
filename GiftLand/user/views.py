@@ -33,6 +33,7 @@ def useradd(request):
 
     context = {
         "form": form,
+        "mss" : mss,
     }
     return render(request, 'user_into.html', context)
 
@@ -50,6 +51,7 @@ def orderadd(request):
 
     context = {
         "form": form,
+        "mss" : mss,
     }
     return render(request, 'order.html', context)
 
@@ -67,6 +69,7 @@ def paymentadd(request):
 
     context = {
         "form": form,
+        "mss" : mss,
     }
     return render(request, 'payment.html', context)
 

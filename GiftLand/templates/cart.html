@@ -9,9 +9,11 @@
 			<table class="table table-sm">
                 <br>
                 <form method="POST">
+				  <b><i style="color:tomato;">{{ massage }}</i></b>
+				  <br>	 
                   {% csrf_token %}  
                   {{form.as_p}}
-                  <input type="submit"></input>
+                  <input type="submit">
                 </form>
 			</table>
 		</div>

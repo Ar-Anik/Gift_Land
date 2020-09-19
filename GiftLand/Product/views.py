@@ -23,14 +23,18 @@ def Show_Product(request):
 
 def ProductAdd(request):
     form=AddProduct()
+    massage = "Add Product"
     if request.method=="POST":
         form =AddProduct(request.POST)
+        massage = "Product is not valid"
         if form.is_valid():
             form.save()
-            form=AddProduct() 
+            form=AddProduct()
+            massage = "Successfully added Product" 
 
     context={
         "form":form,
+        'massage':massage,
     }
     return render(request,'product2.html',context)                    
 
@@ -38,41 +42,54 @@ def ProductAdd(request):
 
 def CategoryAdd(request):
     form=AddCategory()
+    massage = "Add Category"
     if request.method=="POST":
         form =AddCategory(request.POST)
+        massage = "Category is not valid"
         if form.is_valid():
             form.save()
-            form=AddCategory() 
+            form=AddCategory()
+            massage = "Successfully added Category"
+             
 
     context={
         "form":form,
+        "massage":massage,
     }
     return render(request,'category.html',context)     
 
 
 def ReviewAdd(request):
     form=AddReview()
+    massage = "Add a Review"
     if request.method=="POST":
         form =AddReview(request.POST)
+        massage = "Something went worng"
         if form.is_valid():
             form.save()
-            form=AddReview() 
+            form=AddReview()
+            massage = "Successfully added Review" 
 
     context={
         "form":form,
+        "massage":massage,
     }
     return render(request,'review.html',context)   
 
 
 def CartAdd(request):
     form=AddCart()
+    massage = "Add into Cart"
     if request.method=="POST":
         form =AddCart(request.POST)
+        massage = "Something went worng"
         if form.is_valid():
             form.save()
-            form=AddCart() 
+            form=AddCart()
+            massage = "Successfully added Cart" 
 
     context={
         "form":form,
+        "massage":massage,
     }
     return render(request,'cart.html',context)     

@@ -21,9 +21,9 @@ from user import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', Product_views.Show_Product),
-    path('add/', Product_views.ProductAdd),
-    path('addcat/', Product_views.CategoryAdd),
-    path('addre/', Product_views.ReviewAdd),
+    path('addproduct/', Product_views.ProductAdd),
+    path('addcategory/', Product_views.CategoryAdd),
+    path('addreview/', Product_views.ReviewAdd),
     path('addcart/', Product_views.CartAdd),
     path('manage/', Admin_views.Show_Admin),
     path('adda/', Admin_views.AdminAdd),

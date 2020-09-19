@@ -18,7 +18,7 @@ class order(models.Model) :
     o_status = models.CharField(max_length=200,blank=True)
     o_date = models.DateTimeField(auto_now_add=True)
 
-    # user = models.ForeignKey(user, on_delete=models.CASCADE, default=1, null=True)
+    user = models.ForeignKey(user, on_delete=models.CASCADE, default=1, null=True)
 
     def __str__(self) :
         return str(self.o_id)
@@ -28,7 +28,7 @@ class payment(models.Model):
     payment_type = models.CharField(max_length=200, blank=True)
     amount = models.DecimalField(max_digits=20, decimal_places=2)
 
-    # user = models.ForeignKey(user, on_delete=models.SET_NULL, default=1, null=True)
+    user = models.ForeignKey(user, on_delete=models.SET_NULL, default=1, null=True)
 
     def __str__(self):
         return str(self.payment_id)

@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from .form import adduser
 from .form import addorder
 from .form import addpayment
-
+from .form import adddelivery
 
 def customer(request):
     user_info = user.objects.all()

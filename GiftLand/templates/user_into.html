@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col-md">
+		<h4 style="text-align: center; color: yellowgreen;">Adds User</h4>
+		<div class="card card-body">
+			<table class="table table-sm">
+                <br>
+                <form method="POST">
+                  {% csrf_token %}  
+                  {{form.as_p}}
+                  <input type="submit">
+                </form>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}

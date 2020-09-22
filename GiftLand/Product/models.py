@@ -75,19 +75,19 @@ class ProductCategory(models.Model):
     product=models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,default=1)
     category=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,default=1)        
     
-    def __str__(self):
-        return str(self.Product.product_id) + "," + str(self.Category.category_id)  
+    # def __str__(self):
+    #    return str(self.Product.product_id) + "," + str(self.Category.category_id)  
 
 class ProductReview(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE,null=True,default=1)
     review=models.ForeignKey(Review,on_delete=models.SET_NULL,null=True)
     
-    def __str__(self):
-        return str(self.Product.product_id) + "," + str(self.Review.review_id)      
+    # def __str__(self):
+    #     return str(self.Product.product_id) + "," + str(self.Review.review_id)      
 
 class ProductCart(models.Model):
     product=models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,default=1)
     cart=models.ForeignKey(Cart,on_delete=models.SET_NULL,null=True)
-    def __str__(self):
-        return str(self.Product.product_id) + "," + str(self.Cart.cart_id)    
+    # def __str__(self):
+    #     return str(self.Product.product_id) + "," + str(self.Cart.cart_id)    
 

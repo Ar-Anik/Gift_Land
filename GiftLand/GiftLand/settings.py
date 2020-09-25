@@ -125,3 +125,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/image/download/'
 MEDIA_ROOT = BASE_DIR
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='login'

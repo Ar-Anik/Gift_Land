@@ -36,7 +36,8 @@ urlpatterns = [
     path('addorder/', user_views.orderadd),
     path('addpayment/', user_views.paymentadd),
     path('adddelivery/', user_views.addDelivery),
-    path('register/', registerView.Register),
+    #path('register/', registerView.Register),
+    path('signup/',registerView.Registerpage),
     path('', viewproduct.Index),
     path('account/',include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

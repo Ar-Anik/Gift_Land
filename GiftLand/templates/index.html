@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid mt-3">
+	 <div class="row">
+<!--all products-->
+<div id="products" class="col-lg-8 mx-auto">
+	<div class="row mx-auto" >
+		{% for i in product %}
+		<div class="card mx-auto mb-3" style="width: 18rem;">
+		<img src="{{i.p_image.url }}" class="card-img-top" alt="...">
+		<div class="card-body">
+		<p class="card-title">{{i.p_name}}</p>
+		<p class="card-text"><b>{{i.p_price}}</b></p>
+		<button type="submit" class="btn btn-success border btn-sm">Add to Cart</button>
+		</div>
+		</div>
+		{% endfor %}  
+	</div>			
+</div>
+
+
+</div>
+</div>
+
+{% endblock %}
+

@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 from Product import views as Product_views
 from Admin import views as Admin_views
 from user import views as user_views
+from ProductView import views as viewproduct
+from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', Product_views.Show_Product),
@@ -27,9 +30,10 @@ urlpatterns = [
     path('addcart/', Product_views.CartAdd),
     path('manage/', Admin_views.Show_Admin),
     path('adda/', Admin_views.AdminAdd),
-    path('', user_views.customer),
+    path('user', user_views.customer),
     path('adduser/', user_views.useradd),
     path('addorder/', user_views.orderadd),
     path('addpayment/', user_views.paymentadd),
     path('adddelivery/', user_views.addDelivery),
-]
+    path('', viewproduct.Index),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

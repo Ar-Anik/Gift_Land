@@ -20,6 +20,7 @@ from Product import views as Product_views
 from Admin import views as Admin_views
 from user import views as user_views
 from ProductView import views as viewproduct
+from UserManagement import views as registerView
 from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,5 +36,6 @@ urlpatterns = [
     path('addorder/', user_views.orderadd),
     path('addpayment/', user_views.paymentadd),
     path('adddelivery/', user_views.addDelivery),
+    path('register/', registerView.Register),
     path('', viewproduct.Index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

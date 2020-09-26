@@ -38,8 +38,10 @@ urlpatterns = [
     path('addpayment/', user_views.paymentadd),
     path('adddelivery/', user_views.addDelivery),
     path('signup/',userman_views.Registerpage),
-    path('createprofile/', userman_views.create_profile, name='createprofile'),
-    path('viewprofile/', userman_views.view_profile, name='viewprofile'),
+    # path('createprofile/', userman_views.Createprofile, name='createprofile'),
+    # path('viewprofile/', userman_views.Viewprofile, name='viewprofile'),
+    path('profile/',userman_views.CreateProfile),
+    path('profileview/',userman_views.ViewProfile),
     path('', viewproduct.Index),
     path('account/',include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

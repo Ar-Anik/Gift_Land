@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'ProductView.apps.ProductviewConfig',
     'UserManagement.apps.UsermanagementConfig',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

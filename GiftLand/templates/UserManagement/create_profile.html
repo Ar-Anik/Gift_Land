@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="row mx-auto" >
+        <div class="col mx-auto" >
+            <div class="col d-flex justify-content-center"></div>
+                 <form  method="POST" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 {{ form|crispy }}<br>
+                <input class="btn btn-sm btn-warning" type="submit" name="Create User">
+                <hr>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>            
+{% endblock %}
+
+

@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="col d-flex justify-content-center">
+   <div class="card" style="width: 18rem;">
+        <img src="{{profile.Picture_Picture.url}}" class="card-img-top">
+        <div class="card-body">
+          <p class="card-text">Name-> {{profile.name}}</p>
+          <p class="card-text">Contact No->  {{profile.Phone}}</p>
+        </div>
+    </div>
+</div>
+<hr>  
+
+{% endblock %}

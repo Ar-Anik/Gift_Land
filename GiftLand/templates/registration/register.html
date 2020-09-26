@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 <br>
-<form   method="POST">
-    {% csrf_token %}
-    {{form.as_p}}<br>
-    <br>
-    <input class="btn btn-sm btn-warning" type="submit" name="Create User">
-</form>
+<div class="container">
+    <div class="row mx-md-n5" >
+        <div class="col px-md-5" >
+            <div class="col d-flex justify-content-center"></div>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}<br>
+                <br>
+                <input class="btn btn-sm btn-warning" type="submit" name="Create User">
+            </form>
+            <hr>
+            </div>
+        </div>
+    </div>
+</div>            
 {% endblock %}

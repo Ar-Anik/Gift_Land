@@ -20,8 +20,9 @@ from Product import views as Product_views
 from Admin import views as Admin_views
 from user import views as user_views
 from ProductView import views as viewproduct
-from UserManagement import views as registerView
-from . import settings
+from UserManagement import views as userman_views
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', Product_views.Show_Product),
@@ -36,8 +37,9 @@ urlpatterns = [
     path('addorder/', user_views.orderadd),
     path('addpayment/', user_views.paymentadd),
     path('adddelivery/', user_views.addDelivery),
-    #path('register/', registerView.Register),
-    path('signup/',registerView.Registerpage),
+    path('signup/',userman_views.Registerpage),
+    path('createprofile/', userman_views.create_profile, name='createprofile'),
+    path('viewprofile/', userman_views.view_profile, name='viewprofile'),
     path('', viewproduct.Index),
     path('account/',include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -58,11 +58,13 @@ def CreateProfile(request):
     form = Profileform()
     if request.method == "POST":
         form = Profileform(request.POST,request.FILES)
+        
     if form.is_valid():
         profile_object =form.save(commit=False)
         profile_object.user =request.user
         profile_object.save()
         return redirect('/')
+
     context ={
         'form':form,
     }

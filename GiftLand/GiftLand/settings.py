@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'Product.apps.ProductConfig',
     'Admin.apps.AdminConfig',
     'user.apps.UserConfig',
-    'ProductView.apps.ProductviewConfig',
     'UserManagement.apps.UsermanagementConfig',
     'crispy_forms',
+    'ProductInfo.apps.ProductinfoConfig',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

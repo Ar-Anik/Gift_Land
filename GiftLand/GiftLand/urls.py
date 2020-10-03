@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from Product import views as Product_views
 from Admin import views as Admin_views
 from user import views as user_views
-from ProductView import views as viewproduct
+from ProductInfo import views as Product
 from UserManagement import views as userman_views
 from django.conf import settings
 
@@ -42,7 +42,7 @@ urlpatterns = [
     # path('viewprofile/', userman_views.Viewprofile, name='viewprofile'),
     path('profile/', userman_views.CreateProfile),
     path('profileview/', userman_views.ViewProfile),
-    path('', viewproduct.ShowProducts),
+    path('',Product.ShowProducts),
     path('account/', include('django.contrib.auth.urls')),
-    path('<int:product_id>', viewproduct.ProductDetails),
+    # path('<int:product_id>',viewproduct.ProductDetails),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

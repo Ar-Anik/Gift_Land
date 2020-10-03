@@ -45,4 +45,6 @@ urlpatterns = [
     path('', Product.ShowProducts),
     path('account/', include('django.contrib.auth.urls')),
     path('<int:product_id>', Product.ProductDetails),
+    path('cart/', Product.ViewCart, name='cart'),
+    path('updatecart/<int:product_id>', Product.AddtoCart, name='update-cart'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

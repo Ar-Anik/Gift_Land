@@ -12,3 +12,15 @@ class Product(models.Model):
     
     def __str__(self):
         return self.p_name
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    product = models.ManyToManyField(Product)
+
+
+    created_date= models.DateTimeField(auto_now_add= True ,auto_now=False)
+    update_date=models.DateTimeField(auto_now_add=False ,auto_now=True)
+
+    def __str__(self):
+        return self.user.username        

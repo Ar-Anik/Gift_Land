@@ -6,24 +6,43 @@ from django.forms import ModelForm
 from .forms import Profileform
 from .models import Profile
 from ProductInfo.models import Cart
+from .forms import reg_form
 
 # Create your views here.
 
-def Registerpage(request):
-    form = UserCreationForm()
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
+# def Registerpage(request):
+#     form = UserCreationForm()
+#     if request.method == "POST":
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user=form.save()
+#             cart= Cart(user=user)
+#             cart.save()
+#             form.save()
+#             return redirect('/')    
+#     context={
+#         'form':form,
+#     }
+#     return render(request,'registration/register.html',context) 
+
+
+def Registerpage(request) :
+    form = reg_form()
+
+    if request.method == "POST" :
+        form = reg_form(request.POST)
+
         if form.is_valid():
             user=form.save()
             cart= Cart(user=user)
             cart.save()
             form.save()
-            return redirect('/')    
-    context={
-        'form':form,
+            return redirect('/')  
+
+    context = {
+        'form' : form,
     }
     return render(request,'registration/register.html',context) 
-
 
 
 @login_required

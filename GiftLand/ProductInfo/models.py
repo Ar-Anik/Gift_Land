@@ -23,4 +23,35 @@ class Cart(models.Model):
     update_date=models.DateTimeField(auto_now_add=False ,auto_now=True)
 
     def __str__(self):
-        return self.user.username        
+        return self.user.username 
+
+class Order(models.Model) :
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
+
+    created_date = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_date = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    STATUS_CHOICES = (
+        ('Pending', 'Pending'),
+        ('Approved', 'Approved'),
+        ('Delivering', 'Delivering'),
+        ('Completed', 'Completed')
+    )
+
+    status = models.CharField(max_length=200, choices=STATUS_CHOICES, blank=True)
+    
+    PAYMENT_CHOICES = (
+        ('Bkash', 'Bkash'),
+        ('Rocket', 'Rocket'),
+        ('Cash on Delivery', 'Cash on Delivery')
+    )
+
+    payment_options = models.CharField(max_length=200, choices=PAYMENT_CHOICES, default='Bkash')
+    paid_status = models.BooleanField(default=False)
+
+    transaction_id = models.CharField(max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username + " " + self.product.name + " " + self.status   

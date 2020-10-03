@@ -1,12 +1,6 @@
-# from django.shortcuts import render,redirect
-# from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth.decorators import login_required
-# from django.forms import ModelForm
-# from .forms import ProfileForm
-# from .models import Profile
-
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.forms import ModelForm
 from .forms import Profileform
@@ -26,32 +20,7 @@ def Registerpage(request):
     }
     return render(request,'registration/register.html',context) 
 
-# @login_required
-# def Createprofile(request) :
-#     form = ProfileForm()
 
-#     if request.method == "POST" :
-#         form = ProfileForm(request.FILES, request.POST)
-
-#         if form.is_valid() :
-#             pro_obj = form.save(commit=False)
-#             pro_obj.user = request.user
-
-#             pro_obj.save()
-
-#             return redirect('http://localhost:8000/')
-
-#     context = {
-#         'form' : form
-#     }
-#     return render(request, 'UserManagement/create_profile.html', context)
-
-#def Viewprofile(request) :
-    #profile=Profile.objects.get(user=request.user)
-    #context = {
-        #'profile':profile,
-    #}
-    #return render(request, 'UserManagement/view_profile.html', context)
 
 @login_required
 def CreateProfile(request):
@@ -78,3 +47,4 @@ def ViewProfile(request):
         'profile':profile,
     }
     return render(request,'UserManagement/view_profile.html',context)
+

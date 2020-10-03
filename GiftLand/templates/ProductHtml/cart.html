@@ -21,12 +21,33 @@
                 Category: {{ detail.category }} <br>
                 Description: {{ detail.description }} <br> 
             </p>
-            <a href="{% url 'order-product' detail.id %}"> 
+
+             <!---<a href="{% url 'order-product' detail.id %}"> 
                 <button type="submit" class="btn btn-outline-warning">Oder Now</button>
+            </a>--->
+            
+
+            <div class="alert alert-warning" role="alert">
+              Option 1:
+            </div>
+            <a href="{% url 'order-product' detail.id %}"> 
+                <button type="submit" class="btn btn-outline-warning">Cash on delivery</button><br>
             </a>
+            <br>
+            <div class="alert alert-warning" role="alert">
+              Option 2:
+            </div>
+            <form action="{% url 'payment' detail.id %}" method="POST">
+                {% csrf_token %}
+                <input name="transaction_id" type="text"  style="border-color: yellow;" placeholder="transaction ID" required>
+                <button type="submit" class="btn btn-outline-warning">Order with Bkash or Rocket</button>
+            </form>
+
+            
             <a href="{% url 'delete-from-cart' detail.id %}"> 
                 <button type="submit" class="btn btn-outline-warning">Remove Item</button>
-            </a>
+            </a> 
+
           </div>
         </div>
       </div>

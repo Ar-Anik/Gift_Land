@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from Product import views as Product_views
 from Admin import views as Admin_views
 from user import views as user_views
-from ProductInfo import views as Product
+from ProductInfo import views as Product_view
 from UserManagement import views as userman_views
 from django.conf import settings
 
@@ -38,27 +38,16 @@ urlpatterns = [
     path('addpayment/', user_views.paymentadd),
     path('adddelivery/', user_views.addDelivery),
     path('signup/', userman_views.Registerpage),
-    # path('createprofile/', userman_views.Createprofile, name='createprofile'),
-    # path('viewprofile/', userman_views.Viewprofile, name='viewprofile'),
     path('profile/', userman_views.CreateProfile),
     path('profileview/', userman_views.ViewProfile),
-    path('', Product.ShowProducts),
+    path('', Product_view.ShowProducts),
     path('account/', include('django.contrib.auth.urls')),
-    path('<int:product_id>', Product.ProductDetails),
-    path('cart/', Product.ViewCart, name='cart'),
-
-    path('updatecart/<int:product_id>', Product.AddtoCart, name='update-cart'),
-
-    path('deletefromcart/<int:product_id>', Product.RemovefromCart, name='delete-from-cart'),
-    path('orderproduct/<int:product_id>', Product.CreateOrder, name='order-product'),
-    path('orders/', Product.UserOrder, name='orders'),
-
-    path('payment/<int:product_id>', Product.Payment, name='payment'),
-
-
-    # path('updatecart/<int:product_id>', Product_view.AddtoCart, name='update-cart'),
-    # path('deletefromcart/<int:product_id>', Product_view.RemovefromCart, name='delete-from-cart'),
-    # path('orderproduct/<int:product_id>', Product_view.CreateOrder, name='order-product'),
-    # path('orders/', Product_view.UserOrder),
-
+    path('<int:product_id>',Product_view.ProductDetails),
+    path('cart/',Product_view.ViewCart, name='cart'),
+    path('updatecart/<int:product_id>', Product_view.AddtoCart, name='update-cart'),
+    path('deletefromcart/<int:product_id>', Product_view.RemovefromCart, name='delete-from-cart'),
+    path('orderproduct/<int:product_id>', Product_view.CreateOrder, name='order-product'),
+    path('orders/', Product_view.UserOrder),
+    path('payment/<int:product_id>',Product_view.Payment, name='payment'),
+    path('review/<int:product_id>',Product_view.ProductReview, name='review'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

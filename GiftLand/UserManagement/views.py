@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.forms import ModelForm
 from .forms import Profileform
 from .models import Profile
+from ProductInfo.models import Cart
 
 # Create your views here.
 
@@ -13,8 +14,11 @@ def Registerpage(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
+            user=form.save()
+            cart= Cart(user=user)
+            cart.save()
             form.save()
-            return redirect('login')    
+            return redirect('/')    
     context={
         'form':form,
     }

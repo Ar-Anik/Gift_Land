@@ -1,6 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+class Review(models.Model):
+    RatingStar=(
+        ('*','*'),
+        ('**','**'),
+        ('***','***'),
+        ('****','****'),
+        ('*****','*****'),
+    )
+
+    rating=models.CharField(max_length=10,choices=RatingStar,default='***')
+    comment=models.TextField(blank=True,null=True)
+
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+
+    def __str__(self):
+        return self.rating
+
+
+
 class Product(models.Model):
     p_id=models.IntegerField(default=0)
     p_name=models.CharField(max_length=100)
@@ -9,6 +28,8 @@ class Product(models.Model):
     category=models.CharField(max_length=100)
     p_image=models.ImageField(upload_to='product/images')
     #file = models.FileField(upload_to='products/files/', blank=True, null=True, default='products/files/default.pdf')
+
+    reviews = models.ManyToManyField(Review)
     
     def __str__(self):
         return self.p_name
@@ -25,8 +46,8 @@ class Cart(models.Model):
     def __str__(self):
         return self.user.username 
 
-class Order(models.Model) :
-    
+class Order(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
 
@@ -40,18 +61,19 @@ class Order(models.Model) :
         ('Completed', 'Completed')
     )
 
-    status = models.CharField(max_length=200, choices=STATUS_CHOICES, blank=True)
-    
-    PAYMENT_CHOICES = (
-        ('Bkash', 'Bkash'),
-        ('Rocket', 'Rocket'),
-        ('Cash on Delivery', 'Cash on Delivery')
+    status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='Pending')
+
+    PAYMENT_OPTION=(
+        ('Bkash','Bkash'),
+        ('Rocket','Rocket'),
+        ('Cash on delivery','Cash on delivery'),
     )
 
-    payment_options = models.CharField(max_length=200, choices=PAYMENT_CHOICES, default='Bkash')
-    paid_status = models.BooleanField(default=False)
+    payment_method= models.CharField(max_length=100,choices=PAYMENT_OPTION,default='Cash on delivery')
 
-    transaction_id = models.CharField(max_length=30, null=True, blank=True)
+    paid = models.BooleanField(default=False)
+
+    transaction_id = models.CharField(max_length=100,null=True,blank=True)
 
     def __str__(self):
-        return self.user.username + " " + self.product.name + " " + self.status   
+        return self.user.username + "-" + self.product.p_name + "-" + self.status

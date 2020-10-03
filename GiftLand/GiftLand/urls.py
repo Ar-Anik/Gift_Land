@@ -42,7 +42,7 @@ urlpatterns = [
     # path('viewprofile/', userman_views.Viewprofile, name='viewprofile'),
     path('profile/', userman_views.CreateProfile),
     path('profileview/', userman_views.ViewProfile),
-    path('',Product.ShowProducts),
+    path('', Product.ShowProducts),
     path('account/', include('django.contrib.auth.urls')),
-    # path('<int:product_id>',viewproduct.ProductDetails),
+    path('<int:product_id>', Product.ProductDetails),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

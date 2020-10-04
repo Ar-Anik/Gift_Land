@@ -10,9 +10,17 @@ from .forms import ProductForm
 from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-def ShowProducts(request):
-
+def ShowProducts(request):    
     products = Product.objects.all()
+    if request.method == 'POST':
+        products = Product.objects.filter(p_name__icontains = request.POST['search'])
+        category = Product.objects.filter(category__icontains= request.POST['search'])
+        description = Product.objects.filter(description__icontains=request.POST['search'])
+
+        products = products | category | description
+
+        print(products,category,description)
+     
     context = {
         'products': products,
     }
@@ -74,8 +82,8 @@ def CreateOrder(request, product_id):
     order.save()
     cart = get_object_or_404(Cart,user=request.user) 
     #cart = Cart.objects.get(user=request.user)
-    #cart.product.remove(product)
-    cart.product.add(product)
+    cart.product.remove(product)
+    #cart.product.add(product)
     cart.save()
 
     return redirect('cart')    

@@ -40,7 +40,7 @@ urlpatterns = [
     path('signup/', userman_views.Registerpage),
     path('profile/', userman_views.CreateProfile),
     path('profileview/', userman_views.ViewProfile),
-    path('', Product_view.ShowProducts),
+    path('', Product_view.ShowProducts,name='index'),
     path('account/', include('django.contrib.auth.urls')),
     path('<int:product_id>',Product_view.ProductDetails),
     path('cart/',Product_view.ViewCart, name='cart'),

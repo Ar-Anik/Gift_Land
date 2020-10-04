@@ -65,7 +65,10 @@ def CreateProfile(request):
 
 
 def ViewProfile(request):
-    profile=Profile.objects.get(user=request.user)    
+    try:
+        profile=Profile.objects.get(user=request.user)
+    except Profile.DoesNotExist:
+        profile = print("Please complete your Profile to view")
     context ={
         'profile':profile,
     }

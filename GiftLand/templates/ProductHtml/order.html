@@ -5,7 +5,6 @@
 <!--Order Pendening-->
 {% if order_status == True %}
     {% for order in orders %}
-        {% if order.status == 'Pending' %}
         <br>
         <div class="col d-flex justify-content-center">
             <div class="card bg-light mb-2`" >
@@ -24,123 +23,29 @@
                         Category : {{ order.product.category }} <br>
                         Description : {{ order.product.description }} <br>
                         <br>
-                        <button type="button" class="btn btn-outline-warning">{{ order.status }}</button>
+                        {% if order.status == 'Pending' %}
+                        <button type="button" class="btn btn-lg btn-outline-warning disabled">{{ order.status }}</button>
+                        {% elif order.status == 'Approved' %}
+                        <button type="button" class="btn btn-lg btn-outline-info disabled">{{ order.status }}</button>
+                        {% elif order.status == 'Delivering' %}
+                        <button type="button" class="btn btn-lg btn-outline-primary disabled">{{ order.status }}</button>
+                        {% elif order.status == 'Completed' %}
+                        <button type="button" class="btn btn-lg btn-outline-success disabled">{{ order.status }}</button>
+                        <a href="{% url 'review' order.product.id %}" ><button type="submit" class="btn btn-lg btn-outline-success">Review</button></a>
+                        {% endif %}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
         </div> 
-        {% endif %}
     {% endfor %}
     </div>
-
-<!--Order Approved-->
-    {% for order in orders %}
-        {% if order.status == 'Approved' %}
-        <br>
-        <div class="col d-flex justify-content-center">
-            <div class="card bg-light mb-2`" >
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="{{ order.product.p_image.url }}" class="card-img" alt="...">
-                </div>
-        
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ detail.p_name }}</h5>
-                    <p class="card-text">
-                        Product : {{ order.product.p_name }} <br>
-                        ID : {{ order.product.p_id }} <br>
-                        Price : {{ order.product.p_price }} <br>
-                        Category : {{ order.product.category }} <br>
-                        Description : {{ order.product.description }} <br>
-                        <br>
-                        <button type="button" class="btn btn-outline-warning">{{ order.status }}</button>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div> 
-        {% endif %}
-    {% endfor %}
-    </div>
-
-
-
-<!--Order Delivering-->
-{% for order in orders %}
-   {% if order.status == 'Delivering' %}
-   <br>
-   <div class="col d-flex justify-content-center">
-      <div class="card bg-light mb-2`" >
-        <div class="row no-gutters">
-         <div class="col-md-4">
-           <img src="{{ order.product.p_image.url }}" class="card-img" alt="...">
-         </div>
-
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ detail.p_name }}</h5>
-            <p class="card-text">
-                Product : {{ order.product.p_name }} <br>
-                ID : {{ order.product.p_id }} <br>
-                Price : {{ order.product.p_price }} <br>
-                Category : {{ order.product.category }} <br>
-                Description : {{ order.product.description }} <br>
-                <br>
-                <button type="button" class="btn btn-outline-warning">{{ order.status }}</button>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-</div> 
-{% endif %}
-{% endfor %}
-</div>
-
-
-<!--Order Completed-->
-{% for order in orders %}
-   {% if order.status == 'Completed' %}
-   <br>
-   <div class="col d-flex justify-content-center">
-      <div class="card bg-light mb-2`" >
-        <div class="row no-gutters">
-         <div class="col-md-4">
-           <img src="{{ order.product.p_image.url }}" class="card-img" alt="...">
-         </div>
-
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ detail.p_name }}</h5>
-            <p class="card-text">
-                Product : {{ order.product.p_name }} <br>
-                ID : {{ order.product.p_id }} <br>
-                Price : {{ order.product.p_price }} <br>
-                Category : {{ order.product.category }} <br>
-                Description : {{ order.product.description }} <br>
-                <br>
-                <button type="button" class="btn btn-outline-warning">{{ order.status }}</button>
-            </p>
-
-            <a href="{% url 'review' order.product.id %}" ><button type="submit" class="btn btn-outline-warning">Review</button></a>
-          </div>
-        </div>
-      </div>
-    </div>
-</div> 
-{% endif %}
-{% endfor %}
-</div>
-
 <br>
 <div class="col d-flex justify-content-center">
-    <button type="submit" class="btn btn-outline-warning">Total Amount : {{ total }}</button>
+    <button type="submit" class="btn btn-outline-warning disabled">Total Amount : {{ total }}</button>
     {% else %}
-    <button type="submit" class="btn btn-outline-warning">Total Amount : 0.00</button>
+    <button type="submit" class="btn btn-outline-warning disabled">Total Amount : 0.00</button>
     {% endif %}
 </div>
 <hr>

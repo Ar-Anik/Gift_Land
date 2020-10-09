@@ -20,7 +20,7 @@
             Description: {{ detail.description }} <br>              
           </p>
           <a href="{% url 'update-cart' detail.id %}"> 
-            <button type="submit" class="btn btn-outline-warning">Add to Cart</button>
+            <button type="submit" class="btn btn-lg btn-outline-warning">Add to Cart</button>
           </a>
         </div>
       </div>
@@ -31,7 +31,7 @@
 
 
 <div class="col d-flex justify-content-center">
-    {% for review in detail.reviews.all %}
+  {% for review in detail.reviews.all %}
     <div class="card border-warning mb-3" style="max-width: 18rem;">
       <div class="card-header">User: {{ review.user.username }}</div>
       <div class="card-body text-warning">
@@ -41,6 +41,7 @@
     </div>
     {% endfor %}
   </div>
+    
 
   
   <div class="col d-flex justify-content-center">
